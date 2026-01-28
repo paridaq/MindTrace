@@ -6,6 +6,7 @@ function Register(){
     return(
 
         <>
+        
        <form action="">
 
         <input type="text" placeholder="Firstname"/>
