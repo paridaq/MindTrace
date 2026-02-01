@@ -1,3 +1,17 @@
+server:
+  port: 5001
+
+
 spring:
   application:
     name: MindTrace
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/mind_trace
+    username: root
+    password: Biswajit@091
+    driver-class-name: com.mysql.cj.jdbc.Driver
