@@ -1,0 +1,62 @@
+/* Assuming home.css uses standard CSS variables for color consistency */
+
+.people-container {
+    padding: 2rem;
+    background-color: var(--bg-color, #ffffff);
+    color: var(--text-color, #333333);
+}
+
+.people-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.person-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: var(--card-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #e0e0e0);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.person-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px var(--shadow-color, rgba(0, 0, 0, 0.1));
+}
+
+.person-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color, #007bff);
+}
+
+.person-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color, #007bff);
+}
+
+.person-role {
+    font-size: 0.9rem;
+    color: var(--secondary-text, #666666);
+    margin-bottom: 1rem;
+}
+
+.person-bio {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    text-align: center;
+}

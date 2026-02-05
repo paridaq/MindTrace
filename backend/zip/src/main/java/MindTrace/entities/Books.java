@@ -1,10 +1,7 @@
 package MindTrace.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.File;
 
@@ -16,6 +13,9 @@ public class Books {
     private long id ;
     private long user_id;
     private String book_name;
+
+//    @ManyToOne(fetch= FetchType.LAZY)
+//    @JoinColumn(name = "user_id",nullable= false)
     private File book_file;
     private boolean status;
 }
