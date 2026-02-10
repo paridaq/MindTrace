@@ -2,6 +2,7 @@
 import Home from "./homepage/Home"
 import Nav from "./navbar/Nav"
 import People from "./people/People"
+import Books from "./books/Books"
 import { Routes, Route } from "react-router"
 import Questions from "./questionpage/Questions"
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/people" element={<People />} />
         <Route path="/questions" element={<Questions />} />
+        <Route path="/books" element={<Books />} />
       </Routes>
     </>
   )
