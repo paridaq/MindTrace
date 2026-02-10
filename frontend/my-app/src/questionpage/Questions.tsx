@@ -7,20 +7,22 @@ interface Question {
     name: string;
     link: string;
     topic: string;
+    solutionApproach: string;
     date: string;
 }
 
 const Questions: React.FC = () => {
     const [questions, setQuestions] = useState<Question[]>([
-        { id: 1, name: 'Two Sum', link: 'https://leetcode.com/problems/two-sum/', topic: 'Arrays', date: '2023-10-27' },
-        { id: 2, name: 'Reverse Linked List', link: 'https://leetcode.com/problems/reverse-linked-list/', topic: 'Linked List', date: '2023-10-28' },
-        { id: 3, name: 'Binary Search', link: 'https://leetcode.com/problems/binary-search/', topic: 'Algorithms', date: '2023-10-29' },
+        { id: 1, name: 'Two Sum', link: 'https://leetcode.com/problems/two-sum/', topic: 'Arrays', solutionApproach: 'Use a hash map to store .', date: '2023-10-27' },
+        { id: 2, name: 'Reverse Linked List', link: 'https://leetcode.com/problems/reverse-linked-list/', topic: 'Linked List', solutionApproach: 'Iterate with prev, curr, and next pointers.', date: '2023-10-28' },
+        { id: 3, name: 'Binary Search', link: 'https://leetcode.com/problems/binary-search/', topic: 'Algorithms', solutionApproach: 'Divide search space in half each step.', date: '2023-10-29' },
     ]);
 
     const [newQuestion, setNewQuestion] = useState({
         name: '',
         link: '',
-        topic: ''
+        topic: '',
+        solutionApproach: ''
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,18 +31,19 @@ const Questions: React.FC = () => {
     };
 
     const handleAddQuestion = () => {
-        if (!newQuestion.name || !newQuestion.link || !newQuestion.topic) return;
+        if (!newQuestion.name || !newQuestion.link || !newQuestion.topic || !newQuestion.solutionApproach) return;
 
         const question: Question = {
             id: questions.length + 1,
             name: newQuestion.name,
             link: newQuestion.link,
             topic: newQuestion.topic,
+            solutionApproach: newQuestion.solutionApproach,
             date: new Date().toISOString().split('T')[0]
         };
 
         setQuestions([...questions, question]);
-        setNewQuestion({ name: '', link: '', topic: '' });
+        setNewQuestion({ name: '', link: '', topic: '', solutionApproach: '' });
     };
 
     return (
@@ -78,6 +81,15 @@ const Questions: React.FC = () => {
                         onChange={handleInputChange}
                     />
                 </div>
+                <div className="input-group">
+                    <input
+                        type="text"
+                        name="solutionApproach"
+                        placeholder="Solution Approach"
+                        value={newQuestion.solutionApproach}
+                        onChange={handleInputChange}
+                    />
+                </div>
                 <button className="add-btn" onClick={handleAddQuestion}>
                     ADD QUESTION
                 </button>
@@ -91,6 +103,7 @@ const Questions: React.FC = () => {
                             <th>Question Name</th>
                             <th>Link</th>
                             <th>Topic</th>
+                            <th>Solution Approach</th>
                             <th>Adding Date</th>
                         </tr>
                     </thead>
@@ -105,12 +118,13 @@ const Questions: React.FC = () => {
                                     </a>
                                 </td>
                                 <td><span className="topic-tag">{q.topic}</span></td>
+                                <td>{q.solutionApproach}</td>
                                 <td>{q.date}</td>
                             </tr>
                         ))}
                         {questions.length === 0 && (
                             <tr>
-                                <td colSpan={5} className="empty-message">No questions added yet.</td>
+                                <td colSpan={6} className="empty-message">No questions added yet.</td>
                             </tr>
                         )}
                     </tbody>
