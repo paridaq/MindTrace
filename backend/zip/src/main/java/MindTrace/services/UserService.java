@@ -1,6 +1,5 @@
 package MindTrace.services;
 
-
 import MindTrace.dtos.CreateUserDto;
 import MindTrace.entities.User;
 import MindTrace.repository.UserRepository;
@@ -14,27 +13,15 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-
-    public User createUser(CreateUserDto dto){
+    public User createUser(CreateUserDto dto) {
         User user = new User();
         user.setUsername(dto.getUsername());
         user.setLeetocdeurl(dto.getLeetcodeurl());
         user.setRole(dto.getRole());
         user.setCodeforceurl(dto.getCodeforceurl());
         user.setCreated_at(new Date());
-        return user;
-
-
+        return userRepository.save(user);
 
     }
-
-
-//    private String username;
-//    private String role;
-//    private String desgignation;
-//    private String leetocdeurl;
-//    private String codeforceurl;
-//    private Date created_at;
-
 
 }
