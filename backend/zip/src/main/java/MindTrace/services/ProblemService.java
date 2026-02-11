@@ -1,6 +1,5 @@
 package MindTrace.services;
 
-
 import MindTrace.SmallServices;
 import MindTrace.dtos.AddQuestionDto;
 import MindTrace.entities.CodingProblems;
@@ -27,7 +26,8 @@ public class ProblemService {
     private User user;
 
     public CodingProblems addProblems(AddQuestionDto dto, CodingProblems problem,Long user_id){
-
+       User user = userRepository.findById(user_id).orElseThrow();
+       problem.setUser(user);
         problem.setQuestion_name(dto.getQuestion_name());
         problem.setQuestion_link(dto.getQuestion_Link());
         String platform = smallServices.getPlatformName(dto.getQuestion_Link());
@@ -35,5 +35,6 @@ public class ProblemService {
         problem.setDifficulty(dto.getDifficulty());
         problem.setSolution_approach(dto.getSolution_approach());
         return problem;
+
     }
 }
