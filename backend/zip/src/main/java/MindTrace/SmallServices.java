@@ -2,6 +2,9 @@ package MindTrace;
 
 import java.net.URL;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SmallServices {
 
     public String getPlatformName(String questionUrl) {
@@ -11,10 +14,10 @@ public class SmallServices {
 
             if (host.contains("leetcode")) {
                 return "LeetCode";
-            } else if (host.contains("codeforces")) {  // fixed spelling
+            } else if (host.contains("codeforces")) { // fixed spelling
                 return "Codeforces";
             } else {
-                return "Unknown Platform";  // VERY IMPORTANT
+                return "Unknown Platform"; // VERY IMPORTANT
             }
 
         } catch (Exception e) {

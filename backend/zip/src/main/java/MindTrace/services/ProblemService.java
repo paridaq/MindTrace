@@ -14,20 +14,16 @@ public class ProblemService {
 
     @Autowired
     private ProblemsRepository problemsRepository;
-    @Autowired
-    private CodingProblems codingProblems;
-    @Autowired
-    private AddQuestionDto addQuestionDto;
+
     @Autowired
     private SmallServices smallServices;
+
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private User user;
 
-    public CodingProblems addProblems(AddQuestionDto dto, CodingProblems problem,Long user_id){
-       User user = userRepository.findById(user_id).orElseThrow();
-       problem.setUser(user);
+    public CodingProblems addProblems(AddQuestionDto dto, CodingProblems problem, Long user_id) {
+        User user = userRepository.findById(user_id).orElseThrow();
+        problem.setUser(user);
         problem.setQuestion_name(dto.getQuestion_name());
         problem.setQuestion_link(dto.getQuestion_Link());
         String platform = smallServices.getPlatformName(dto.getQuestion_Link());
