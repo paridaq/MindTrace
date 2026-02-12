@@ -14,7 +14,7 @@ public class QuestionController {
     @Autowired
     public ProblemService problemService;
 
-    @PostMapping()
+    @PostMapping("/{user_id}")
     public ResponseEntity<QuestionDto> addQuestion(@RequestBody AddQuestionDto dto, @RequestParam Long user_id) {
         CodingProblems problem = new CodingProblems();
         CodingProblems problem1 = problemService.addProblems(dto, problem, user_id);
