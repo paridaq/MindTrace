@@ -25,11 +25,12 @@ public class ProblemService {
         User user = userRepository.findById(user_id).orElseThrow();
         problem.setUser(user);
         problem.setQuestion_name(dto.getQuestion_name());
-        problem.setQuestion_link(dto.getQuestion_Link());
-        String platform = smallServices.getPlatformName(dto.getQuestion_Link());
+        problem.setQuestion_link(dto.getQuestion_link());
+        String platform = smallServices.getPlatformName(dto.getQuestion_link());
         problem.setPlatform(platform);
         problem.setDifficulty(dto.getDifficulty());
         problem.setSolution_approach(dto.getSolution_approach());
+        problemsRepository.save(problem);
         return problem;
 
     }

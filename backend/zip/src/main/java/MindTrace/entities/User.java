@@ -1,13 +1,11 @@
 package MindTrace.entities;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,12 +16,12 @@ public class User {
     private long id;
     private String username;
     private String role;
-    private String desgignation;
-    private String leetocdeurl;
+    private String designation;
+    private String leetcodeurl;
     private String codeforceurl;
     private Date created_at;
 
-
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CodingProblems> codingProblems = new ArrayList<>();
 
 }

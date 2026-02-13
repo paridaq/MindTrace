@@ -16,8 +16,9 @@ public class UserService {
     public User createUser(CreateUserDto dto) {
         User user = new User();
         user.setUsername(dto.getUsername());
-        user.setLeetocdeurl(dto.getLeetcodeurl());
+        user.setLeetcodeurl(dto.getLeetcodeurl());
         user.setRole(dto.getRole());
+        user.setDesignation(dto.getDesignation());
         user.setCodeforceurl(dto.getCodeforceurl());
         user.setCreated_at(new Date());
         return userRepository.save(user);

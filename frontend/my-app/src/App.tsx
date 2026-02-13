@@ -5,6 +5,7 @@ import People from "./people/People"
 import Books from "./books/Books"
 import { Routes, Route } from "react-router"
 import Questions from "./questionpage/Questions"
+import Register from "./register/Register"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/people" element={<People />} />
         <Route path="/questions" element={<Questions />} />
         <Route path="/books" element={<Books />} />

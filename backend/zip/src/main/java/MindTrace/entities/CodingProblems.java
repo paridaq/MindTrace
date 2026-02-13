@@ -1,6 +1,5 @@
 package MindTrace.entities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,12 +15,12 @@ public class CodingProblems {
     private long id;
     private String question_name;
     private String question_link;
-    private String Platform;
-    private String Difficulty;
+    private String platform;
+    private String difficulty;
     private String solution_approach;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
 }
