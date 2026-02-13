@@ -3,6 +3,11 @@ import { useNavigate } from "react-router";
 import "./Home.css";
 
 function Home() {
+  const user_id = localStorage.getItem("user_id");
+  console.log(user_id);
+  localStorage.getItem("username");
+
+
 
 
   const navigate = useNavigate();

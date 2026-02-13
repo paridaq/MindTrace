@@ -9,4 +9,5 @@ public class QuestionDto {
     private String question_link;
     private String difficulty;
     private String solution_approach;
+    private String topic;
 }

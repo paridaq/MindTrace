@@ -3,6 +3,8 @@ import "./Nav.css";
 
 function Nav() {
    const navigate = useNavigate();
+   const user_id = localStorage.getItem("user_id");
+   const username = localStorage.getItem("username");
 
    return (
       <nav className="navbar">
@@ -18,12 +20,20 @@ function Nav() {
          </div>
 
          <div className="navbar__actions">
-            <button className="btn btn--link" onClick={() => navigate("/login")}>
-               Login
-            </button>
-            <button className="btn btn--primary btn--nav" onClick={() => navigate("/register")}>
-               Register
-            </button>
+            {username ? (
+               <span className="navbar__username" style={{ fontWeight: "600", color: "#121212" }}>
+                  Hello, {username}
+               </span>
+            ) : (
+               <>
+                  <button className="btn btn--link" onClick={() => navigate("/login")}>
+                     Login
+                  </button>
+                  <button className="btn btn--primary btn--nav" onClick={() => navigate("/register")}>
+                     Register
+                  </button>
+               </>
+            )}
          </div>
       </nav>
    );

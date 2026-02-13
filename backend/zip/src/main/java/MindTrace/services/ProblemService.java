@@ -30,6 +30,7 @@ public class ProblemService {
         problem.setPlatform(platform);
         problem.setDifficulty(dto.getDifficulty());
         problem.setSolution_approach(dto.getSolution_approach());
+        problem.setTopic(dto.getTopic());
         problemsRepository.save(problem);
         return problem;
 

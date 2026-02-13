@@ -18,6 +18,7 @@ public class CodingProblems {
     private String platform;
     private String difficulty;
     private String solution_approach;
+    private String topic;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

@@ -24,26 +24,59 @@ const Questions: React.FC = () => {
         topic: '',
         solutionApproach: ''
     });
+    const user_id = localStorage.getItem("user_id");
+
+
+
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setNewQuestion(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleAddQuestion = () => {
+    const handleAddQuestion = async () => {
         if (!newQuestion.name || !newQuestion.link || !newQuestion.topic || !newQuestion.solutionApproach) return;
 
-        const question: Question = {
-            id: questions.length + 1,
-            name: newQuestion.name,
-            link: newQuestion.link,
-            topic: newQuestion.topic,
-            solutionApproach: newQuestion.solutionApproach,
-            date: new Date().toISOString().split('T')[0]
-        };
+        if (!user_id) {
+            console.error("User ID not found");
+            return;
+        }
 
-        setQuestions([...questions, question]);
-        setNewQuestion({ name: '', link: '', topic: '', solutionApproach: '' });
+        try {
+            const response = await fetch(`http://localhost:5001/api/questions/${user_id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    question_name: newQuestion.name,
+                    question_link: newQuestion.link,
+                    topic: newQuestion.topic,
+                    solution_approach: newQuestion.solutionApproach
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add question');
+            }
+
+            const data = await response.json();
+
+            const question: Question = {
+                id: data.id,
+                name: data.question_name,
+                link: data.question_link,
+                topic: data.topic,
+                solutionApproach: data.solution_approach,
+                date: new Date().toISOString().split('T')[0] // Backend doesn't return date yet
+            };
+
+            setQuestions([...questions, question]);
+            setNewQuestion({ name: '', link: '', topic: '', solutionApproach: '' });
+        } catch (error) {
+            console.error("Error adding question:", error);
+        }
     };
 
     return (

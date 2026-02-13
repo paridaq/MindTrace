@@ -44,6 +44,8 @@ function Register() {
                 leetcodeurl: '',
                 codeforceurl: ''
             });
+            localStorage.setItem("user_id", String(data.id));
+            localStorage.setItem("username", data.username);
             navigate('/');
         } catch (err: any) {
             console.error('Error registering user:', err);

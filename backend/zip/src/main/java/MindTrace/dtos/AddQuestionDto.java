@@ -12,6 +12,7 @@ public class AddQuestionDto {
     private String platform;
     private String difficulty;
     private String solution_approach;
+    private String topic;
 
 }
 

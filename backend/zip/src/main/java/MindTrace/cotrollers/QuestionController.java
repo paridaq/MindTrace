@@ -24,6 +24,7 @@ public class QuestionController {
         responseDto.setQuestion_link(savedProblem.getQuestion_link());
         responseDto.setDifficulty(savedProblem.getDifficulty());
         responseDto.setSolution_approach(savedProblem.getSolution_approach());
+        responseDto.setTopic(savedProblem.getTopic());
         return ResponseEntity.ok(responseDto);
 
     }
