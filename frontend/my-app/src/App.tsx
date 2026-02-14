@@ -6,6 +6,7 @@ import Books from "./books/Books"
 import { Routes, Route } from "react-router"
 import Questions from "./questionpage/Questions"
 import Register from "./register/Register"
+import Todo from "./todo/Todo"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/questions" element={<Questions />} />
         <Route path="/books" element={<Books />} />
+        <Route path="/todo" element={<Todo />} />
       </Routes>
     </>
   )

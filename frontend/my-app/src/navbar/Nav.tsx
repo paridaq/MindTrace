@@ -17,6 +17,7 @@ function Nav() {
             <Link to="/people" className="nav-link">People</Link>
             <Link to="/questions" className="nav-link">Questions</Link>
             <Link to="/books" className="nav-link">Books</Link>
+            <Link to="/todo" className="nav-link">Todo</Link>
          </div>
 
          <div className="navbar__actions">
