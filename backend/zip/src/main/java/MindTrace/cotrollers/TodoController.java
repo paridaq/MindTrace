@@ -20,24 +20,5 @@ public class TodoController {
         return ResponseEntity.ok(todo);
     }
 
-    @GetMapping("/{user_id}")
-    public ResponseEntity<List<Todo>> getTodos(@PathVariable Long user_id) {
-        return ResponseEntity.ok(todoService.getTodos(user_id));
-    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable Long id) {
-        todoService.deleteTodo(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Todo> updateTodo(@PathVariable Long id, @RequestBody TodoDto dto) {
-        return ResponseEntity.ok(todoService.updateTodo(id, dto));
-    }
-
-    @PutMapping("/{id}/toggle")
-    public ResponseEntity<Todo> toggleImportant(@PathVariable Long id) {
-        return ResponseEntity.ok(todoService.toggleImportant(id));
-    }
 }

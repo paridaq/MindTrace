@@ -29,4 +29,8 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Todo> todo = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<LearningTodo>learningTodos = new ArrayList<>();
+
 }

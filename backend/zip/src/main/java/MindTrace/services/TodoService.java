@@ -31,26 +31,6 @@ public class TodoService {
 
     }
 
-    public List<Todo> getTodos(Long user_id) {
-        User user = userRepository.findById(user_id).orElseThrow();
-        return todoRepositroy.findByUser(user);
-    }
 
-    public Todo updateTodo(Long id, TodoDto dto) {
-        Todo todo = todoRepositroy.findById(id).orElseThrow();
-        todo.setName(dto.getName());
-        todo.setImportant(dto.isImportant());
-        return todoRepositroy.save(todo);
-    }
-
-    public void deleteTodo(Long id) {
-        todoRepositroy.deleteById(id);
-    }
-
-    public Todo toggleImportant(Long id) {
-        Todo todo = todoRepositroy.findById(id).orElseThrow();
-        todo.setImportant(!todo.isImportant());
-        return todoRepositroy.save(todo);
-    }
 
 }

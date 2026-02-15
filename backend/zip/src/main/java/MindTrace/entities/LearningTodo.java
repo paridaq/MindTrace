@@ -1,14 +1,12 @@
 package MindTrace.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 import tools.jackson.databind.DatabindException;
 
 import java.util.Date;
-
+@Data
 @Entity
 public class LearningTodo {
 
@@ -20,5 +18,9 @@ public class LearningTodo {
     private boolean priority;
     private String resources;
     private String anylink;
-    private long user_id;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "user_id",nullable = false)
+    private User user;
 }

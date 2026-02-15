@@ -1,12 +1,13 @@
 
+import { Routes, Route } from "react-router"
 import Home from "./homepage/Home"
 import Nav from "./navbar/Nav"
 import People from "./people/People"
 import Books from "./books/Books"
-import { Routes, Route } from "react-router"
 import Questions from "./questionpage/Questions"
 import Register from "./register/Register"
 import Todo from "./todo/Todo"
+import Dashboard from "./dashboard/Dashboard"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/questions" element={<Questions />} />
         <Route path="/books" element={<Books />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   )
