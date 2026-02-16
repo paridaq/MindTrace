@@ -11,6 +11,7 @@ import org.apache.tomcat.util.security.ConcurrentMessageDigest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -72,9 +73,30 @@ public class ProblemService {
     public List<CodingProblems> searchProblems(QuestionDto dto,Long user_id){
         User user = new User();
       List<CodingProblems>problems =  user.getCodingProblems();
-
+      List<CodingProblems> result = new ArrayList<>();
+      
       for(CodingProblems problem: problems){
-
+          if(dto.getTopic()!=null){
+              if(dto.getTopic()==problem.getTopic()){
+                  result.add(problem);
+              }
+          }
       }
+      for(CodingProblems problem: problems){
+          if(dto.getDifficulty()!=null){
+              if(dto.getTopic()==problem.getTopic()){
+                  result.add(problem);
+              }
+          }
+      }
+      for(CodingProblems problem: problems){
+          if(dto.getQuestion_name()!=null){
+              if(dto.getQuestion_name()==problem.getQuestion_name()){
+                  result.add(problem);
+              }
+          }
+      }
+      return result;
+
     }
 }
