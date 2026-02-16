@@ -59,11 +59,18 @@ public class QuestionController {
 
         }
 
+
+        //search api
+      @PostMapping("{user_id}/question/search")
+       public ResponseEntity<CodingProblems>searchProblem(@RequestBody QuestionDto dto,@PathVariable Long user_id){
+
+
+      }
+
     }
 
 
-    //search questions
 
 
 
-}
+

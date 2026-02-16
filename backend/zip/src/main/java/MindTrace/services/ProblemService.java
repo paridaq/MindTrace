@@ -7,6 +7,7 @@ import MindTrace.entities.CodingProblems;
 import MindTrace.entities.User;
 import MindTrace.repository.ProblemsRepository;
 import MindTrace.repository.UserRepository;
+import org.apache.tomcat.util.security.ConcurrentMessageDigest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +66,15 @@ public class ProblemService {
         return null;
 
 
+
+
+    }
+    public List<CodingProblems> searchProblems(QuestionDto dto,Long user_id){
+        User user = new User();
+      List<CodingProblems>problems =  user.getCodingProblems();
+
+      for(CodingProblems problem: problems){
+
+      }
     }
 }
