@@ -9,7 +9,9 @@ import MindTrace.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +28,7 @@ public class PeopleService {
         people.setCompany(dto.getCompany());
         people.setDesignation(dto.getDesignation());
         people.setLinkedin_url(dto.getLinkedin_url());
+        people.setCreated_at(dto.getCreated_at());
 
         User user = userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User not found"));
         people.setUser(user);
@@ -70,6 +73,18 @@ public class PeopleService {
         return result;
 
 
+    }
+
+    public List<People> addToday(Long user_id){
+        User user = new User();
+
+        List<People> people = user.getPeople();
+        for(People people1:people){
+            if(people1.getCreated_at()== new Date()){
+               people.add(people1);
+            }
+        }
+        return people;
     }
 
 }

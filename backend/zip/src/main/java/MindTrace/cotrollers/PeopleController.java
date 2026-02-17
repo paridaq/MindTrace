@@ -46,10 +46,16 @@ public class PeopleController {
   @PostMapping("/{user_id}/searchPeople")
   public ResponseEntity<List<People>> serachPeople(@PathVariable Long user_id, PeopleSearchDto dto){
 
-
+       List<People>people = peopleService.searchPeople(user_id,dto);
+       return ResponseEntity.ok(people);
 
   }
 
+  @GetMapping("{user_id}/addToday")
+  public ResponseEntity<List<People>>addToday(@PathVariable Long user_id){
+    List<People>people = peopleService.addToday(user_id);
+    return ResponseEntity.ok(people);
+  }
 
 
 
